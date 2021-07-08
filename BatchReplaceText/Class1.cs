@@ -20,11 +20,11 @@ using RegistryKey = Autodesk.AutoCAD.Runtime.RegistryKey;
 
 namespace BatchReplaceText
 {
-    public class MyCmd:IExtensionApplication        
+    public class MyCmd : IExtensionApplication
     {
         public 批量文本替换 Frm { get; set; }
 
-        public  Database AcDb = HostApplicationServices.WorkingDatabase;
+        public Database AcDb = HostApplicationServices.WorkingDatabase;
         private readonly Editor _acEd = Autodesk.AutoCAD.ApplicationServices.Core.Application.DocumentManager.MdiActiveDocument.Editor;
 
         public void Initialize()
@@ -34,7 +34,7 @@ namespace BatchReplaceText
 
             var ass = Assembly.GetExecutingAssembly();
 
-            var mycmdStr = (from item in ass.GetTypes().Where(c => c.IsClass && c.IsPublic) from mi in item.GetMethods().Where(c => c.IsPublic && c.GetCustomAttributes(true).Length > 0).ToList() from att in mi.GetCustomAttributes(true) where att.GetType().Name == typeof(CommandMethodAttribute).Name let cadAtt = att as CommandMethodAttribute select new string[] {mi.Name, cadAtt.GlobalName}).ToList();
+            var mycmdStr = (from item in ass.GetTypes().Where(c => c.IsClass && c.IsPublic) from mi in item.GetMethods().Where(c => c.IsPublic && c.GetCustomAttributes(true).Length > 0).ToList() from att in mi.GetCustomAttributes(true) where att.GetType().Name == typeof(CommandMethodAttribute).Name let cadAtt = att as CommandMethodAttribute select new string[] { mi.Name, cadAtt.GlobalName }).ToList();
             mycmdStr.ForEach(cmd =>
                 _acEd.WriteMessage(message: $"要运行 {cmd[0]} ,请在cad命令行输入 \"{cmd[1]}\" 命令\n"));
         }
@@ -62,29 +62,36 @@ namespace BatchReplaceText
         {
             // Get the AutoCAD/GstarCAD Applications key
             var sProdKey = HostApplicationServices.Current.UserRegistryProductRootKey;
-            var sAppName = Assembly.GetExecutingAssembly().GetTypes()[0].Namespace;
+            var declaringType = MethodBase.GetCurrentMethod().DeclaringType;
+            if (declaringType == null) return;
+
+            var sAppName = declaringType.Namespace;
             var regAcadProdKey = Registry.CurrentUser.CreateSubKey(sProdKey);
             var regAcadAppKey = regAcadProdKey.CreateSubKey("Applications");
             // Check to see if the "MyApp" key exists
             var subKeys = regAcadAppKey.GetSubKeyNames();
-            foreach (var subKey in subKeys)
+            if (!subKeys.Any(subKey => subKey.Equals(sAppName)))
             {
-                // If the application is already registered, exit
-                if (!subKey.Equals(sAppName)) continue;
+                var sAssemblyPath = Assembly.GetExecutingAssembly().Location;
+
+                // Register the application
+                var regAppAddInKey = regAcadAppKey.CreateSubKey(sAppName);
+                regAppAddInKey.SetValue("DESCRIPTION", sAppName, RegistryValueKind.String);
+                regAppAddInKey.SetValue("LOADCTRLS", 14, RegistryValueKind.DWord);
+                regAppAddInKey.SetValue("LOADER", sAssemblyPath, RegistryValueKind.String);
+                regAppAddInKey.SetValue("MANAGED", 1, RegistryValueKind.DWord);
+                regAcadAppKey.Close();
+
+                Autodesk.AutoCAD.ApplicationServices.Core.Application.ShowAlertDialog(
+                    @"自动加载到自启动，如需取消自启动，请输入""UnregisterMyApp"" 命令");
+            }
+            else
+            {
                 regAcadAppKey.Close();
                 return;
             }
-            // Get the location of this module
-            var sAssemblyPath = Assembly.GetExecutingAssembly().Location;
 
-            // Register the application
-            var regAppAddInKey = regAcadAppKey.CreateSubKey(sAppName);
-            regAppAddInKey.SetValue("DESCRIPTION", sAppName, RegistryValueKind.String);
-            regAppAddInKey.SetValue("LOADCTRLS", 14, RegistryValueKind.DWord);
-            regAppAddInKey.SetValue("LOADER", sAssemblyPath, RegistryValueKind.String);
-            regAppAddInKey.SetValue("MANAGED", 1, RegistryValueKind.DWord);
-            regAcadAppKey.Close();
-            Autodesk.AutoCAD.ApplicationServices.Core.Application.ShowAlertDialog(@"自动加载到自启动，如需取消自启动，请输入""UnregisterMyApp"" 命令");
+            // Get the location of this module
         }
 
         [CommandMethod("CancelAutoLoadWithAcad")]
@@ -93,21 +100,19 @@ namespace BatchReplaceText
             // Get the AutoCAD/GstarCAD Applications key
 
             var sProdKey = HostApplicationServices.Current.UserRegistryProductRootKey;
-            var sAppName = Assembly.GetExecutingAssembly().GetTypes()[0].Namespace;
+            var declaringType = MethodBase.GetCurrentMethod().DeclaringType;
+            if (declaringType == null) return;
+            var sAppName = declaringType.Namespace;
 
             var regAcadProdKey = Registry.CurrentUser.OpenSubKey(sProdKey);
             var regAcadAppKey = regAcadProdKey.OpenSubKey("Applications", true);
 
             var subKeys = regAcadAppKey.GetSubKeyNames();
-            foreach (var subKey in subKeys)
-            {
-                // If the application is already registered, exit
-                if (!subKey.Equals(sAppName)) continue;
-                regAcadAppKey.DeleteSubKeyTree(sAppName);
-                regAcadAppKey.Close();
-                Autodesk.AutoCAD.ApplicationServices.Core.Application.ShowAlertDialog("卸载成功，重启cad应用！！！！");
-                return;
-            }
+            if (!subKeys.Any(subKey => subKey.Equals(sAppName))) return;
+            regAcadAppKey.DeleteSubKeyTree(sAppName);
+            regAcadAppKey.Close();
+            Autodesk.AutoCAD.ApplicationServices.Core.Application.ShowAlertDialog("卸载成功，重启cad应用！！！！");
+            return;
 
             // Delete the key for the application
 
