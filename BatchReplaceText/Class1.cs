@@ -10,6 +10,9 @@ using Autodesk.AutoCAD.ApplicationServices;
 using Autodesk.AutoCAD.DatabaseServices;
 using Autodesk.AutoCAD.EditorInput;
 using System.Reflection;
+using Microsoft.Win32;
+using Registry = Autodesk.AutoCAD.Runtime.Registry;
+using RegistryKey = Autodesk.AutoCAD.Runtime.RegistryKey;
 
 [assembly: ExtensionApplication(typeof(BatchReplaceText.MyCmd))]
 
@@ -54,5 +57,60 @@ namespace BatchReplaceText
             this.Frm = null;
         }
 
+        [CommandMethod("SetUpAutoLoadWithAcad")]
+        public void 设置随cad程序自启动()
+        {
+            // Get the AutoCAD/GstarCAD Applications key
+            var sProdKey = HostApplicationServices.Current.UserRegistryProductRootKey;
+            var sAppName = Assembly.GetExecutingAssembly().GetTypes()[0].Namespace;
+            var regAcadProdKey = Registry.CurrentUser.CreateSubKey(sProdKey);
+            var regAcadAppKey = regAcadProdKey.CreateSubKey("Applications");
+            // Check to see if the "MyApp" key exists
+            var subKeys = regAcadAppKey.GetSubKeyNames();
+            foreach (var subKey in subKeys)
+            {
+                // If the application is already registered, exit
+                if (!subKey.Equals(sAppName)) continue;
+                regAcadAppKey.Close();
+                return;
+            }
+            // Get the location of this module
+            var sAssemblyPath = Assembly.GetExecutingAssembly().Location;
+
+            // Register the application
+            var regAppAddInKey = regAcadAppKey.CreateSubKey(sAppName);
+            regAppAddInKey.SetValue("DESCRIPTION", sAppName, RegistryValueKind.String);
+            regAppAddInKey.SetValue("LOADCTRLS", 14, RegistryValueKind.DWord);
+            regAppAddInKey.SetValue("LOADER", sAssemblyPath, RegistryValueKind.String);
+            regAppAddInKey.SetValue("MANAGED", 1, RegistryValueKind.DWord);
+            regAcadAppKey.Close();
+            Autodesk.AutoCAD.ApplicationServices.Core.Application.ShowAlertDialog(@"自动加载到自启动，如需取消自启动，请输入""UnregisterMyApp"" 命令");
+        }
+
+        [CommandMethod("CancelAutoLoadWithAcad")]
+        public static void 取消随cad程序自启动()
+        {
+            // Get the AutoCAD/GstarCAD Applications key
+
+            var sProdKey = HostApplicationServices.Current.UserRegistryProductRootKey;
+            var sAppName = Assembly.GetExecutingAssembly().GetTypes()[0].Namespace;
+
+            var regAcadProdKey = Registry.CurrentUser.OpenSubKey(sProdKey);
+            var regAcadAppKey = regAcadProdKey.OpenSubKey("Applications", true);
+
+            var subKeys = regAcadAppKey.GetSubKeyNames();
+            foreach (var subKey in subKeys)
+            {
+                // If the application is already registered, exit
+                if (!subKey.Equals(sAppName)) continue;
+                regAcadAppKey.DeleteSubKeyTree(sAppName);
+                regAcadAppKey.Close();
+                Autodesk.AutoCAD.ApplicationServices.Core.Application.ShowAlertDialog("卸载成功，重启cad应用！！！！");
+                return;
+            }
+
+            // Delete the key for the application
+
+        }
     }
 }
