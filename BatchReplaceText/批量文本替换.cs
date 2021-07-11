@@ -88,6 +88,17 @@ namespace BatchReplaceText
             string fn;
             string bakFn;
             var icount = 0;
+            if (this.txtBox_NewString.Text == string.Empty || this.txtBox_oldString.Text == string.Empty)
+            {
+                Application.ShowAlertDialog($@"请输入要替换的文字");
+                return;
+            }
+
+            if (this.checkedListBox1.Items.Count==0)
+            {
+                Application.ShowAlertDialog($@"请先添加需要操作的文件");
+                return;
+            }
             foreach (var item in this.checkedListBox1.Items)
             {
                 progressIcount++;
