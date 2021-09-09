@@ -37,6 +37,8 @@ namespace BatchReplaceText
             var mycmdStr = (from item in ass.GetTypes().Where(c => c.IsClass && c.IsPublic) from mi in item.GetMethods().Where(c => c.IsPublic && c.GetCustomAttributes(true).Length > 0).ToList() from att in mi.GetCustomAttributes(true) where att.GetType().Name == typeof(CommandMethodAttribute).Name let cadAtt = att as CommandMethodAttribute select new string[] { mi.Name, cadAtt.GlobalName }).ToList();
             mycmdStr.ForEach(cmd =>
                 _acEd.WriteMessage(message: $"要运行 {cmd[0]} ,请在cad命令行输入 \"{cmd[1]}\" 命令\n"));
+
+            Autodesk.AutoCAD.ApplicationServices.Core.Application.ShowAlertDialog(HostApplicationServices.Current.MachineRegistryProductRootKey);
         }
 
         public void Terminate()
@@ -62,6 +64,7 @@ namespace BatchReplaceText
         {
             // Get the AutoCAD/GstarCAD Applications key
             var sProdKey = HostApplicationServices.Current.UserRegistryProductRootKey;
+            
             var declaringType = MethodBase.GetCurrentMethod().DeclaringType;
             if (declaringType == null) return;
 

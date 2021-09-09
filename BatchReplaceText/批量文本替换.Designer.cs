@@ -81,17 +81,16 @@
             this.groupBox1.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.groupBox1.Location = new System.Drawing.Point(0, 0);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(681, 257);
+            this.groupBox1.Size = new System.Drawing.Size(662, 237);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "初始化文件";
-            //this.groupBox1.Enter += new System.EventHandler(this.groupBox1_Enter);
             // 
             // btnCancelSelect
             // 
-            this.btnCancelSelect.Location = new System.Drawing.Point(150, 221);
+            this.btnCancelSelect.Location = new System.Drawing.Point(150, 204);
             this.btnCancelSelect.Name = "btnCancelSelect";
-            this.btnCancelSelect.Size = new System.Drawing.Size(113, 23);
+            this.btnCancelSelect.Size = new System.Drawing.Size(113, 21);
             this.btnCancelSelect.TabIndex = 1;
             this.btnCancelSelect.Text = "删除选择";
             this.btnCancelSelect.UseVisualStyleBackColor = true;
@@ -99,9 +98,9 @@
             // 
             // btnReadFileList
             // 
-            this.btnReadFileList.Location = new System.Drawing.Point(567, 221);
+            this.btnReadFileList.Location = new System.Drawing.Point(567, 204);
             this.btnReadFileList.Name = "btnReadFileList";
-            this.btnReadFileList.Size = new System.Drawing.Size(108, 23);
+            this.btnReadFileList.Size = new System.Drawing.Size(89, 21);
             this.btnReadFileList.TabIndex = 1;
             this.btnReadFileList.Text = "读取文件列表";
             this.btnReadFileList.UseVisualStyleBackColor = true;
@@ -109,9 +108,9 @@
             // 
             // btnSaveFileList
             // 
-            this.btnSaveFileList.Location = new System.Drawing.Point(440, 221);
+            this.btnSaveFileList.Location = new System.Drawing.Point(440, 204);
             this.btnSaveFileList.Name = "btnSaveFileList";
-            this.btnSaveFileList.Size = new System.Drawing.Size(103, 23);
+            this.btnSaveFileList.Size = new System.Drawing.Size(103, 21);
             this.btnSaveFileList.TabIndex = 1;
             this.btnSaveFileList.Text = "保存文件列表";
             this.btnSaveFileList.UseVisualStyleBackColor = true;
@@ -119,9 +118,9 @@
             // 
             // btnCancelAll
             // 
-            this.btnCancelAll.Location = new System.Drawing.Point(295, 221);
+            this.btnCancelAll.Location = new System.Drawing.Point(295, 204);
             this.btnCancelAll.Name = "btnCancelAll";
-            this.btnCancelAll.Size = new System.Drawing.Size(107, 23);
+            this.btnCancelAll.Size = new System.Drawing.Size(107, 21);
             this.btnCancelAll.TabIndex = 1;
             this.btnCancelAll.Text = "删除全部";
             this.btnCancelAll.UseVisualStyleBackColor = true;
@@ -129,9 +128,9 @@
             // 
             // btnAddFiles
             // 
-            this.btnAddFiles.Location = new System.Drawing.Point(3, 221);
+            this.btnAddFiles.Location = new System.Drawing.Point(3, 204);
             this.btnAddFiles.Name = "btnAddFiles";
-            this.btnAddFiles.Size = new System.Drawing.Size(108, 23);
+            this.btnAddFiles.Size = new System.Drawing.Size(108, 21);
             this.btnAddFiles.TabIndex = 1;
             this.btnAddFiles.Text = "添加文件";
             this.btnAddFiles.UseVisualStyleBackColor = true;
@@ -142,9 +141,9 @@
             this.checkedListBox1.Dock = System.Windows.Forms.DockStyle.Top;
             this.checkedListBox1.FormattingEnabled = true;
             this.checkedListBox1.HorizontalScrollbar = true;
-            this.checkedListBox1.Location = new System.Drawing.Point(3, 16);
+            this.checkedListBox1.Location = new System.Drawing.Point(3, 17);
             this.checkedListBox1.Name = "checkedListBox1";
-            this.checkedListBox1.Size = new System.Drawing.Size(675, 199);
+            this.checkedListBox1.Size = new System.Drawing.Size(656, 180);
             this.checkedListBox1.TabIndex = 0;
             // 
             // panel1
@@ -152,9 +151,9 @@
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel1.Controls.Add(this.splitContainer1);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel1.Location = new System.Drawing.Point(0, 257);
+            this.panel1.Location = new System.Drawing.Point(0, 237);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(681, 153);
+            this.panel1.Size = new System.Drawing.Size(662, 140);
             this.panel1.TabIndex = 2;
             // 
             // splitContainer1
@@ -171,8 +170,8 @@
             // splitContainer1.Panel2
             // 
             this.splitContainer1.Panel2.Controls.Add(this.groupBox4);
-            this.splitContainer1.Size = new System.Drawing.Size(679, 151);
-            this.splitContainer1.SplitterDistance = 351;
+            this.splitContainer1.Size = new System.Drawing.Size(660, 138);
+            this.splitContainer1.SplitterDistance = 341;
             this.splitContainer1.TabIndex = 0;
             // 
             // splitContainer2
@@ -191,8 +190,8 @@
             // 
             this.splitContainer2.Panel2.Controls.Add(this.button1);
             this.splitContainer2.Panel2.Controls.Add(this.groupBox3);
-            this.splitContainer2.Size = new System.Drawing.Size(351, 151);
-            this.splitContainer2.SplitterDistance = 86;
+            this.splitContainer2.Size = new System.Drawing.Size(341, 138);
+            this.splitContainer2.SplitterDistance = 78;
             this.splitContainer2.TabIndex = 0;
             // 
             // groupBox2
@@ -205,7 +204,7 @@
             this.groupBox2.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.groupBox2.Location = new System.Drawing.Point(0, 0);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(347, 82);
+            this.groupBox2.Size = new System.Drawing.Size(337, 74);
             this.groupBox2.TabIndex = 0;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "内容";
@@ -217,9 +216,9 @@
             this.label2.AutoSize = true;
             this.label2.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.label2.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.label2.Location = new System.Drawing.Point(18, 63);
+            this.label2.Location = new System.Drawing.Point(18, 54);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(45, 15);
+            this.label2.Size = new System.Drawing.Size(43, 14);
             this.label2.TabIndex = 1;
             this.label2.Text = "替换为";
             this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -231,34 +230,33 @@
             this.label1.AutoSize = true;
             this.label1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.label1.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.label1.Location = new System.Drawing.Point(6, 26);
+            this.label1.Location = new System.Drawing.Point(6, 20);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(57, 15);
+            this.label1.Size = new System.Drawing.Size(55, 14);
             this.label1.TabIndex = 1;
             this.label1.Text = "查找内容";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // txtBox_NewString
             // 
-            this.txtBox_NewString.Location = new System.Drawing.Point(72, 60);
+            this.txtBox_NewString.Location = new System.Drawing.Point(72, 48);
             this.txtBox_NewString.Name = "txtBox_NewString";
-            this.txtBox_NewString.Size = new System.Drawing.Size(283, 20);
+            this.txtBox_NewString.Size = new System.Drawing.Size(269, 21);
             this.txtBox_NewString.TabIndex = 0;
             // 
             // txtBox_oldString
             // 
-            this.txtBox_oldString.Location = new System.Drawing.Point(72, 23);
+            this.txtBox_oldString.Location = new System.Drawing.Point(72, 17);
             this.txtBox_oldString.Name = "txtBox_oldString";
-            this.txtBox_oldString.Size = new System.Drawing.Size(283, 20);
+            this.txtBox_oldString.Size = new System.Drawing.Size(269, 21);
             this.txtBox_oldString.TabIndex = 0;
             // 
             // button1
             // 
-            this.button1.Dock = System.Windows.Forms.DockStyle.Right;
             this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.Location = new System.Drawing.Point(210, 0);
+            this.button1.Location = new System.Drawing.Point(215, 6);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(137, 57);
+            this.button1.Size = new System.Drawing.Size(119, 43);
             this.button1.TabIndex = 1;
             this.button1.Text = "开始替换";
             this.button1.UseVisualStyleBackColor = true;
@@ -272,7 +270,7 @@
             this.groupBox3.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.groupBox3.Location = new System.Drawing.Point(0, 0);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(209, 57);
+            this.groupBox3.Size = new System.Drawing.Size(209, 52);
             this.groupBox3.TabIndex = 0;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "替换方式";
@@ -281,9 +279,9 @@
             // 
             this.radioButton2.AutoSize = true;
             this.radioButton2.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.radioButton2.Location = new System.Drawing.Point(115, 33);
+            this.radioButton2.Location = new System.Drawing.Point(115, 30);
             this.radioButton2.Name = "radioButton2";
-            this.radioButton2.Size = new System.Drawing.Size(72, 17);
+            this.radioButton2.Size = new System.Drawing.Size(70, 16);
             this.radioButton2.TabIndex = 0;
             this.radioButton2.TabStop = true;
             this.radioButton2.Text = "静默替换";
@@ -293,9 +291,9 @@
             // 
             this.radioButton1.AutoSize = true;
             this.radioButton1.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.radioButton1.Location = new System.Drawing.Point(20, 33);
+            this.radioButton1.Location = new System.Drawing.Point(20, 30);
             this.radioButton1.Name = "radioButton1";
-            this.radioButton1.Size = new System.Drawing.Size(72, 17);
+            this.radioButton1.Size = new System.Drawing.Size(70, 16);
             this.radioButton1.TabIndex = 0;
             this.radioButton1.TabStop = true;
             this.radioButton1.Text = "开图替换";
@@ -313,7 +311,7 @@
             this.groupBox4.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.groupBox4.Location = new System.Drawing.Point(0, 0);
             this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(320, 147);
+            this.groupBox4.Size = new System.Drawing.Size(311, 134);
             this.groupBox4.TabIndex = 0;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "选项";
@@ -321,9 +319,9 @@
             // checkBox_替换块内文字
             // 
             this.checkBox_替换块内文字.AutoSize = true;
-            this.checkBox_替换块内文字.Location = new System.Drawing.Point(6, 125);
+            this.checkBox_替换块内文字.Location = new System.Drawing.Point(6, 115);
             this.checkBox_替换块内文字.Name = "checkBox_替换块内文字";
-            this.checkBox_替换块内文字.Size = new System.Drawing.Size(98, 17);
+            this.checkBox_替换块内文字.Size = new System.Drawing.Size(96, 16);
             this.checkBox_替换块内文字.TabIndex = 0;
             this.checkBox_替换块内文字.Text = "替换块内文字";
             this.checkBox_替换块内文字.UseVisualStyleBackColor = true;
@@ -331,9 +329,9 @@
             // checkBox_完全匹配
             // 
             this.checkBox_完全匹配.AutoSize = true;
-            this.checkBox_完全匹配.Location = new System.Drawing.Point(6, 93);
+            this.checkBox_完全匹配.Location = new System.Drawing.Point(6, 86);
             this.checkBox_完全匹配.Name = "checkBox_完全匹配";
-            this.checkBox_完全匹配.Size = new System.Drawing.Size(74, 17);
+            this.checkBox_完全匹配.Size = new System.Drawing.Size(72, 16);
             this.checkBox_完全匹配.TabIndex = 0;
             this.checkBox_完全匹配.Text = "完全匹配";
             this.checkBox_完全匹配.UseVisualStyleBackColor = true;
@@ -341,9 +339,9 @@
             // checkBox_修改文本高度
             // 
             this.checkBox_修改文本高度.AutoSize = true;
-            this.checkBox_修改文本高度.Location = new System.Drawing.Point(6, 61);
+            this.checkBox_修改文本高度.Location = new System.Drawing.Point(6, 56);
             this.checkBox_修改文本高度.Name = "checkBox_修改文本高度";
-            this.checkBox_修改文本高度.Size = new System.Drawing.Size(98, 17);
+            this.checkBox_修改文本高度.Size = new System.Drawing.Size(96, 16);
             this.checkBox_修改文本高度.TabIndex = 0;
             this.checkBox_修改文本高度.Text = "修改文本高度";
             this.checkBox_修改文本高度.UseVisualStyleBackColor = true;
@@ -351,24 +349,24 @@
             // 
             // textBox_Height
             // 
-            this.textBox_Height.Location = new System.Drawing.Point(139, 59);
+            this.textBox_Height.Location = new System.Drawing.Point(139, 54);
             this.textBox_Height.Name = "textBox_Height";
-            this.textBox_Height.Size = new System.Drawing.Size(170, 20);
+            this.textBox_Height.Size = new System.Drawing.Size(170, 21);
             this.textBox_Height.TabIndex = 0;
             // 
             // txtBox_Layer
             // 
-            this.txtBox_Layer.Location = new System.Drawing.Point(139, 23);
+            this.txtBox_Layer.Location = new System.Drawing.Point(139, 21);
             this.txtBox_Layer.Name = "txtBox_Layer";
-            this.txtBox_Layer.Size = new System.Drawing.Size(170, 20);
+            this.txtBox_Layer.Size = new System.Drawing.Size(170, 21);
             this.txtBox_Layer.TabIndex = 0;
             // 
             // checkBox_指定图层
             // 
             this.checkBox_指定图层.AutoSize = true;
-            this.checkBox_指定图层.Location = new System.Drawing.Point(6, 25);
+            this.checkBox_指定图层.Location = new System.Drawing.Point(6, 23);
             this.checkBox_指定图层.Name = "checkBox_指定图层";
-            this.checkBox_指定图层.Size = new System.Drawing.Size(74, 17);
+            this.checkBox_指定图层.Size = new System.Drawing.Size(72, 16);
             this.checkBox_指定图层.TabIndex = 0;
             this.checkBox_指定图层.Text = "指定图层";
             this.checkBox_指定图层.UseVisualStyleBackColor = true;
@@ -376,9 +374,9 @@
             // 
             // 批量文本替换
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(681, 410);
+            this.ClientSize = new System.Drawing.Size(662, 377);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.groupBox1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
